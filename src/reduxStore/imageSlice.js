@@ -9,6 +9,9 @@ export const imageSlice = createSlice({
     addItem: (state, action) => {
       state.images.push(action.payload);
     },
+    clearItems: (state, action) => {
+      state.images = [];
+    },
   },
 });
 

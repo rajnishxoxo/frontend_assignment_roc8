@@ -1,10 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addItem } from "../reduxStore/imageSlice";
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
 
   const ref = useRef("");
+  const dispatch = useDispatch();
 
   const handleSearchClick = () => {
     setSearchText(ref.current.value);
@@ -17,6 +20,9 @@ const SearchBar = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        if (searchText.trim() === "") {
+          return;
+        }
         const apiUrl = `https://pixabay.com/api/?key=41897696-f0fa39266ff07f46707935fba&q=${searchText}`;
         const response = await fetch(apiUrl);
 
@@ -25,8 +31,8 @@ const SearchBar = () => {
         }
 
         const data = await response.json();
-        console.log(data);
-        
+        console.log(data.hits);
+        dispatch(addItem(data.hits));
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }

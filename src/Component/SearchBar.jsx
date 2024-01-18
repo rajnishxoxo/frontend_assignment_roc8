@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 
 const SearchBar = () => {
+  const [searchText, setSearchText] = useState("");
+
+  const ref = useRef("");
+
+  const handleSearchClick = () => {
+    setSearchText(ref.current.value);
+  };
+
   return (
     <div className="">
       <div
@@ -20,9 +28,10 @@ const SearchBar = () => {
         <div className="border-l-2 border-white h-6 mx-2"></div>
         <input
           type="text"
+          ref={ref}
+          // onChange={(e)=>{setSearchText(e.target.value)}}
           className="w-4/5 ml-5 text-white border-none"
           style={{
-            
             background: "rgba(217, 217, 217, 0.012)",
             padding: "0.8rem",
           }}
@@ -34,6 +43,7 @@ const SearchBar = () => {
             borderRadius: "8.906px",
             border: "2.672px solid #FFF",
           }}
+          onClick={handleSearchClick}
         >
           Go!
         </button>

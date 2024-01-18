@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { addItem } from "../reduxStore/imageSlice";
+import { addItem, clearItems } from "../reduxStore/imageSlice";
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
@@ -20,6 +20,7 @@ const SearchBar = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        dispatch(clearItems());
         if (searchText.trim() === "") {
           return;
         }

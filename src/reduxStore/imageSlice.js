@@ -15,6 +15,6 @@ export const imageSlice = createSlice({
   },
 });
 
-export const { addItem } = imageSlice.actions;
+export const { addItem, clearItems } = imageSlice.actions;
 
 export default imageSlice.reducer;

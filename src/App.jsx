@@ -5,8 +5,8 @@ import SearchBar from "./Component/SearchBar";
 function App() {
   return (
     <div>
-      {/* <LandingPage /> */}
-      <SearchBar />
+      <LandingPage />
+      {/* <SearchBar /> */}
     </div>
   );
 }

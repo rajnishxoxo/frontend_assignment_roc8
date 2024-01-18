@@ -1,4 +1,5 @@
 import React from "react";
+import SearchBar from "../Component/SearchBar";
 
 const LandingPage = () => {
   return (
@@ -38,7 +39,12 @@ const LandingPage = () => {
         <h1 className="text-white text-shadow font-euclid-circular-b text-[30px] lg:text-[60px] font-bold lg:leading-[80px]">
           Discover over 2,000,000 free Stock Images
         </h1>
+
+      <div className=" w-[350px] left-[-80px] lg:w-full lg:left-auto absolute mt-10">
+          <SearchBar/>
+        </div>
       </div>
+    
     </>
   );
 };

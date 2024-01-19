@@ -12,7 +12,7 @@ const ImageBox = () => {
 
   const handleCategoryChange = (data) => {
     setSelectedCategory(data);
-    console.log(selectedCategory);
+    
   };
 
   const dispatch = useDispatch();

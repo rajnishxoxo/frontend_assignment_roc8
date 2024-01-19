@@ -6,11 +6,12 @@ import { addItem, clearItems } from "../reduxStore/imageSlice";
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
 
-  const ref = useRef("");
+  const [makeApiCall, setMakeApiCall] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleSearchClick = () => {
-    setSearchText(ref.current.value);
+    setMakeApiCall(!makeApiCall);
   };
 
   useEffect(() => {
@@ -32,7 +33,7 @@ const SearchBar = () => {
       }
     };
     fetchData();
-  }, [searchText]);
+  }, [makeApiCall]);
 
   return (
     <div className="">
@@ -52,8 +53,10 @@ const SearchBar = () => {
         <div className="border-l-2 border-white h-6 mx-2"></div>
         <input
           type="text"
-          ref={ref}
-          // onChange={(e)=>{setSearchText(e.target.value)}}
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
           className="w-4/5 ml-5 text-white border-none"
           style={{
             background: "rgba(217, 217, 217, 0.012)",

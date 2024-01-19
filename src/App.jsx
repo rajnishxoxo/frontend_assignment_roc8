@@ -1,14 +1,23 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
-import SearchBar from "./Component/SearchBar";
 import ImageBox from "./Component/ImageBox";
 
 function App() {
   return (
-    <div>
-      <LandingPage />
-      <ImageBox></ImageBox>
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div>
+              <LandingPage />
+              <ImageBox />
+            </div>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 

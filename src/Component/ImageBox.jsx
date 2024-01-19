@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import ImageCard from "./ImageCard";
 
 const ImageBox = () => {
   const imageData = useSelector((state) => state.image.images);
@@ -9,17 +10,17 @@ const ImageBox = () => {
     return;
   }
 
-  console.log(imageData[0]);
-
   return (
     <div>
       {imageData &&
         imageData.flat().map((data) => {
           const { id, webformatURL, tags } = data;
-
-          return <div key={id}>
-            
-          </div>;
+          console.log(id, webformatURL, tags);
+          return (
+            <div key={id}>
+              <ImageCard data={{ id, webformatURL, tags }} />
+            </div>
+          );
         })}
     </div>
   );

@@ -7,7 +7,7 @@ const ImageCard = (props) => {
   return (
     <div>
      
-      <img src={webformatURL} alt="Image" />
+      <img className="w-[364.59px] h-[242.607px]" src={webformatURL} alt="Image" />
       <p>{tags}</p>
     </div>
   );

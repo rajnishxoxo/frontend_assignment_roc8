@@ -5,7 +5,8 @@ import ImageCard from "./ImageCard";
 const ImageBox = () => {
   const imageData = useSelector((state) => state.image.images);
   const flatArray = imageData.flat(Infinity);
-  const selectedData = flatArray.slice(0, 6);
+  const shuffledArray = flatArray.sort(() => Math.random() - 0.5);
+  const selectedData = shuffledArray.slice(0, 6);
 
   // Check if imageData is an array and if it has elements
   if (!Array.isArray(imageData) || imageData.length === 0) {

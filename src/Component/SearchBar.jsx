@@ -9,16 +9,24 @@ const SearchBar = () => {
   const [makeApiCall, setMakeApiCall] = useState(false);
 
   const dispatch = useDispatch();
+  const [lastSearchText, setLastSearchText] = useState(""); 
+
+  const [result, setResult] = useState(false);
 
   const handleSearchClick = () => {
     setMakeApiCall(!makeApiCall);
   };
 
+  const ref = useRef(null);
+
+
   useEffect(() => {
+    console.log(lastSearchText)
     const fetchData = async () => {
       try {
         dispatch(clearItems());
         if (searchText.trim() === "") {
+          setResult(false);
           return;
         }
         const apiUrl = `https://pixabay.com/api/?key=41897696-f0fa39266ff07f46707935fba&q=${searchText}`;
@@ -28,6 +36,8 @@ const SearchBar = () => {
         }
         const data = await response.json();
         dispatch(addItem(data.hits));
+        setResult(true);
+        setLastSearchText(searchText);
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
@@ -47,11 +57,15 @@ const SearchBar = () => {
           backdropFilter: "blur(25.034873962402344px)",
         }}
       >
-        <div className="ml-2">
-          <FaSearch style={{ color: "white", fontSize: "1em" }} />
+        <div>
+          <FaSearch
+            className="ml-4"
+            style={{ color: "white", fontSize: "1em" }}
+          />
         </div>
-        <div className="border-l-2 border-white h-6 mx-2"></div>
+        <div className="border-l-2 border-white h-6 ml-4 "></div>
         <input
+          ref={ref}
           type="text"
           value={searchText}
           onChange={(e) => {
@@ -75,6 +89,25 @@ const SearchBar = () => {
           Go!
         </button>
       </div>
+      {result && (
+        <div>
+          <h1
+            className="absolute top-3/4 mt-10 left-1/3 text-white text-4xl"
+            style={{
+              color: "#FFF",
+              textAlign: "center",
+              textShadow: "0px 3.551px 3.551px rgba(0, 0, 0, 0.25)",
+              fontFamily: "Euclid Circular B",
+              fontSize: "42.614px",
+              fontStyle: "normal",
+              fontWeight: 700,
+              lineHeight: "87.359px",
+            }}
+          >
+            Result: {lastSearchText}
+          </h1>
+        </div>
+      )}
     </div>
   );
 };

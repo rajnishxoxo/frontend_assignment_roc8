@@ -21,7 +21,7 @@ const LandingPage = () => {
           }}
         >
           <div className="mr-5">
-            <h1 className=" text-white font-euclid-circular-b text-[17.813px] font-semibold leading-[19.95px]">
+            <h1 className=" ml-5 text-white font-euclid-circular-b text-[17.813px] font-semibold leading-[19.95px]">
               Homepage
             </h1>
           </div>

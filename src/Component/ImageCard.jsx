@@ -17,7 +17,7 @@ const ImageCard = (props) => {
         {arrayOfTags.map((data) => (
           <div
             key={data}
-            className="text-white w-20  mr-2 px-2 py-1 font-helvetica-neue text-xs font-normal uppercase leading-5 bg-slate-400"
+            className="text-black font-normal  text-center w-28  mr-2 px-2 py-1 font-helvetica-neue text-xs  uppercase leading-5 bg-slate-100"
           >
             <p>{data}</p>
           </div>

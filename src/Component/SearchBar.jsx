@@ -13,10 +13,6 @@ const SearchBar = () => {
     setSearchText(ref.current.value);
   };
 
-  // we will call the api
-  // console.log data for now.
-  // create and store data in redux store as of now.
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,19 +22,15 @@ const SearchBar = () => {
         }
         const apiUrl = `https://pixabay.com/api/?key=41897696-f0fa39266ff07f46707935fba&q=${searchText}`;
         const response = await fetch(apiUrl);
-
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-
         const data = await response.json();
-        console.log(data.hits);
         dispatch(addItem(data.hits));
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
     };
-
     fetchData();
   }, [searchText]);
 

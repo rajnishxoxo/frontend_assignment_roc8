@@ -13,7 +13,7 @@ const ImageBox = () => {
   }
 
   return (
-    <div className="w-[1287px] h-[911px] flex-shrink-0 rounded-[8.878px] bg-white border border-black">
+    <div className=" w-full flex flex-col  lg:w-[1287px] lg:h-[950px] lg:grid grid-cols-3 gap-4 lg:m-auto rounded-[8.878px] bg-white">
       {selectedData &&
         selectedData.flat().map((data) => {
           const { id, webformatURL, tags } = data;

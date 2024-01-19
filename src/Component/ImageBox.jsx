@@ -1,12 +1,43 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ImageCard from "./ImageCard";
+import { addItem, clearItems } from "../reduxStore/imageSlice";
 
 const ImageBox = () => {
   const imageData = useSelector((state) => state.image.images);
   const flatArray = imageData.flat(Infinity);
   const shuffledArray = flatArray.sort(() => Math.random() - 0.5);
   const selectedData = shuffledArray.slice(0, 6);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const handleCategoryChange = (data) => {
+    setSelectedCategory(data);
+    console.log(selectedCategory);
+  };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        dispatch(clearItems());
+        if (selectedCategory.trim() === "") {
+          return;
+        }
+        const apiUrl = `https://pixabay.com/api/?key=41897696-f0fa39266ff07f46707935fba&q=${selectedCategory}`;
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        dispatch(addItem(data.hits));
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+    fetchData();
+  }, [selectedCategory]);
+
   //HardCoded Data
   const shortCutArray = [
     "Digital",
@@ -34,7 +65,10 @@ const ImageBox = () => {
         {shortCutArray.map((data) => {
           return (
             <div>
-              <button className=" border border-gray-400  px-6 rounded-md py-2 m-2">
+              <button
+                onClick={() => handleCategoryChange(data)}
+                className=" border border-gray-400  px-6 rounded-md py-2 m-2"
+              >
                 {data}
               </button>
             </div>

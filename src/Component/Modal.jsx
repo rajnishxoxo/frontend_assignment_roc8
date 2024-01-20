@@ -54,7 +54,7 @@ const Modal = (props) => {
       </div>
       <div className="w-full flex flex-row">
         {/* third div */}
-        <div className="w-2/4 " style={{}}>
+        <div className="w-2/4 ml-10 " style={{}}>
           <img className="rounded-md w-full object-" src={webformatURL} />
         </div>
         <div className=" w-2/5  mx-auto flex flex-col">
@@ -132,7 +132,7 @@ const Modal = (props) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row w-2/4 items-center ">
+      <div className="flex ml-10 flex-row w-2/4 items-center ">
         <div>Tags:</div>
         <div className="flex flex-row justify-between   w-full ">
           {newTag.map((data) => {

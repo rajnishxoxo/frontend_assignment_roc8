@@ -3,9 +3,9 @@ import { Puff } from 'react-loader-spinner';
 
 const LoadingComponent = () => {
   return (
-    <div className="loading-container">
+    <div className="flex flex-row items-center w-[250px] justify-between mt-5 mx-auto">
       <Puff color="#00BFFF" height={80} width={80} />
-      <p>Loading Images...</p>
+      <p className='text-white'>Loading Images...</p>
     </div>
   );
 };

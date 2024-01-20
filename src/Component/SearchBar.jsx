@@ -2,16 +2,15 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addItem, clearItems } from "../reduxStore/imageSlice";
+import LoadingComponent from "./LoadingComponent";
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
-
   const [makeApiCall, setMakeApiCall] = useState(false);
-
   const dispatch = useDispatch();
-  const [lastSearchText, setLastSearchText] = useState(""); 
-
+  const [lastSearchText, setLastSearchText] = useState("");
   const [result, setResult] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSearchClick = () => {
     setMakeApiCall(!makeApiCall);
@@ -19,32 +18,46 @@ const SearchBar = () => {
 
   const ref = useRef(null);
 
-
   useEffect(() => {
-    console.log(lastSearchText)
+    let timeoutId;
+
     const fetchData = async () => {
       try {
+        setLoading(true);
         dispatch(clearItems());
+
         if (searchText.trim() === "") {
           setResult(false);
+          setLoading(false);
           return;
         }
+
         const apiUrl = `https://pixabay.com/api/?key=41897696-f0fa39266ff07f46707935fba&q=${searchText}`;
         const response = await fetch(apiUrl);
+
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
+
         const data = await response.json();
-       
         dispatch(addItem(data.hits));
         setResult(true);
         setLastSearchText(searchText);
       } catch (error) {
         console.error("Error fetching data:", error.message);
+      } finally {
+        setLoading(false);
       }
     };
-    fetchData();
-  }, [makeApiCall]);
+
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => {
+      fetchData();
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
+  }, [makeApiCall, searchText, dispatch]);
 
   return (
     <div className="">
@@ -90,6 +103,7 @@ const SearchBar = () => {
           Go!
         </button>
       </div>
+      {loading && <LoadingComponent />}
       {result && (
         <div>
           <h1

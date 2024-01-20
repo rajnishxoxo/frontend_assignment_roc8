@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
 import ImageBox from "./Component/ImageBox";
+import Modal from "./Component/Modal";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         />
       </Routes>
     </Router>
+    
   );
 }
 

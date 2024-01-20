@@ -1,5 +1,6 @@
 import React from "react";
 import { ImCross } from "react-icons/im";
+import CheckBox from "./CheckBox";
 
 const Modal = (props) => {
   const { onClose, data } = props;
@@ -14,10 +15,26 @@ const Modal = (props) => {
     downloads,
     tags,
     likes,
+    previewURL,
   } = data;
 
+  
   const newTag = tags.split(",");
-  console.log(newTag);
+  const handleDownload = async () => {
+    try {
+      const res = await fetch(previewURL);
+      const blob = await res.blob();      
+      const downloadLink = document.createElement("a");
+
+      downloadLink.href = window.URL.createObjectURL(blob);
+      downloadLink.download = "downloaded-image.jpg";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    } catch (error) {
+      console.error("Error downloading image:", error);
+    }
+  };
 
   return (
     <div
@@ -70,6 +87,15 @@ const Modal = (props) => {
           >
             Download
           </h1>
+          <CheckBox />
+
+          <button
+            className="w-[274.667px] h-[37.333px] mx-auto"
+            style={{ background: "#4BC34B" }}
+            onClick={handleDownload}
+          >
+            Download for free!
+          </button>
           <div>
             <h1
               style={{

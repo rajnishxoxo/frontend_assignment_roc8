@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Modal from "./Modal";
 
 const ImageCard = (props) => {
-  const { id, webformatURL, tags ,pageURL } = props.data;
-  console.log(pageURL)
+  const { id, webformatURL, tags, pageURL } = props.data;
+  console.log(pageURL);
   // tags into array.
   const arrayOfTags = tags.split(",");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="w-[300px] h-[150px] m-auto mt-2 lg:w-[350px] lg:h-[240px] lg:m-auto lg:mt-5">
-      <Link to={pageURL}>
-        <img
-          className="rounded-md w-full h-3/4 object-cover"
-          src={webformatURL}
-          alt="Image"
-        />
-      </Link>
+      <img
+        className="rounded-md w-full h-3/4 object-cover"
+        src={webformatURL}
+        alt="Image"
+      />
+
       <div className="flex flex-row  justify-between mt-2 items-center">
         {arrayOfTags.map((data) => (
           <div

@@ -2,8 +2,10 @@ import React from "react";
 import { ImCross } from "react-icons/im";
 
 const Modal = (props) => {
-  console.log(props)
-  const { onClose } = props;
+  console.log(props);
+  const { onClose, data } = props;
+  console.log(data);
+  const { webformatURL, id } = data;
   return (
     <div
       className="w-[1000px] h-[550px] border border-black"
@@ -31,7 +33,7 @@ const Modal = (props) => {
             lineHeight: "51.447px",
           }}
         >
-          Preview ID :
+          Preview ID: {id}
         </h1>
         <button onClick={onClose} className="mr-10">
           <ImCross />
@@ -40,13 +42,35 @@ const Modal = (props) => {
       <div className="w-full flex flex-row">
         {/* third div */}
         <div className="w-2/4 " style={{}}>
-          <img
-            className="rounded-md"
-            src="https://images.unsplash.com/photo-1682687220208-22d7a2543e88?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          />
+          <img className="rounded-md w-full object-" src={webformatURL} />
         </div>
-        <div>
-          <h1>download</h1>
+        <div className="border border-red-600 w-2/4 flex flex-col">
+          <h1
+            style={{
+              color: "#3B4043",
+              fontFamily: "Euclid Circular B",
+              fontSize: "21.325px",
+              fontStyle: "normal",
+              fontWeight: 500,
+              lineHeight: "51.447px",
+            }}
+          >
+            Download
+          </h1>
+          <div>
+            <h1
+              style={{
+                color: "#3B4043",
+                fontFamily: "Euclid Circular B",
+                fontSize: "21.325px",
+                fontStyle: "normal",
+                fontWeight: 500,
+                lineHeight: "51.447px",
+              }}
+            >
+              Information
+            </h1>
+          </div>
         </div>
       </div>
       <div></div>

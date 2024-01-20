@@ -18,6 +18,7 @@ const ImageCard = (props) => {
     user,
     user_id,
     view,
+    type,
     webformatHeight,
   } = props.data;
 
@@ -61,6 +62,7 @@ const ImageCard = (props) => {
     user,
     user_id,
     view,
+    type,
     webformatHeight,
   }}
 />

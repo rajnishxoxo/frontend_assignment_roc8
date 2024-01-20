@@ -6,7 +6,7 @@ import { addItem, clearItems } from "../reduxStore/imageSlice";
 const ImageBox = () => {
   const imageData = useSelector((state) => state.image.images);
   const flatArray = imageData.flat(Infinity);
-  console.log(flatArray);
+
   const shuffledArray = flatArray.sort(() => Math.random() - 0.5);
   const selectedData = shuffledArray.slice(0, 6);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -92,24 +92,10 @@ const ImageBox = () => {
               user,
               user_id,
               view,
+              type,
               webformatHeight,
             } = data;
-            console.log(
-              id,
-              webformatURL,
-              tags,
-              pageURL,
-              comments,
-              downloads,
-              likes,
-              previewHeight,
-              previewURL,
-              previewWidth,
-              user,
-              user_id,
-              view,
-              webformatHeight
-            );
+
             return (
               <div key={id}>
                 <ImageCard
@@ -127,6 +113,7 @@ const ImageBox = () => {
                     user,
                     user_id,
                     view,
+                    type,
                     webformatHeight,
                   }}
                 />

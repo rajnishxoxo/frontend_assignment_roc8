@@ -58,7 +58,7 @@ const ImageBox = () => {
   return (
     <div className="m-auto border bg-gray-200 items-center">
       <div
-        className=" w-full py-3 m-auto flex flex-row justify-between  lg:w-[1287px]"
+        className=" w-full flex flex-col py-3 m-auto lg:flex lg:flex-row justify-between  lg:w-[1287px]"
         style={{
           backgroundColor: "#F5F5F5",
         }}
@@ -68,7 +68,7 @@ const ImageBox = () => {
             <div>
               <button
                 onClick={() => handleCategoryChange(data)}
-                className=" border border-gray-400  px-6 rounded-md py-2 m-2"
+                className=" w-full my-1  border border-gray-400  lg:px-6 rounded-md lg:py-2 lg:m-2 block"
               >
                 {data}
               </button>

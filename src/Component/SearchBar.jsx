@@ -93,7 +93,7 @@ const SearchBar = () => {
       {result && (
         <div>
           <h1
-            className="absolute top-28 lg:top-3/4 mt-10 lg:left-1/3 left-10 text-white text-4xl"
+            className="absolute top-28 lg:top-3/4 mt-10 lg:left-1/3 left-16 text-white text-4xl"
             style={{
               color: "#FFF",
               textAlign: "center",

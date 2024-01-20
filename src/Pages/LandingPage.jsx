@@ -1,21 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from "../Component/SearchBar";
+import { imageURL } from "../Utils/util";
 
 const LandingPage = () => {
-  //store url in format of array , 0-defaul , 1- newimage.
-
-  // useEffect - after referesh
-
-  // function - random images select. 
-
-  // selected will cover.
-
   return (
     <>
       <div
         className="w-screen h-screen flex  justify-center"
         style={{
-          background: `url('https://s3-alpha-sig.figma.com/img/4612/66c8/4c5ae5807660eb18152caeff2019dde6?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FvX6cB-JOKiICE8vcy73FJVcapTGqunvcuXCt-Jfnxmrpdcc2ZM6k~kGi~eFmTLe69Tch0Fa-MjplyevZqCy9e0d7~vcbMtnvXITFP7VZ1IqGqHFV09wyviG8h06uxVMOxHmWOrEonpGD3gR~DKIAIfji7L36s54tVNfwrFOsM1Wa4f1OG3LHPxt1WeG7DRJqiXrKpIFdD~ypdjFk85WMaVFYGtiDsgNhY~G5EpCzKL3ogJqPEkWbbUjaGVOO5BuLPBepsxhDs30qvEJNVcO-B8kpTyisJtz5wwMbiDsK5Tjr9SmbZagKtJyPIMy96nOOdNHpF8pl-uzLQJIhsnPZg__') lightgray 50% / cover no-repeat`,
+          background: `url('${imageURL}') lightgray 50% / cover no-repeat`,
         }}
       >
         <div
@@ -48,11 +41,10 @@ const LandingPage = () => {
           Discover over 2,000,000 free Stock Images
         </h1>
 
-      <div className=" w-[350px] left-[-80px] lg:w-full lg:left-auto absolute mt-10">
-          <SearchBar/>
+        <div className=" w-[350px] left-[-80px] lg:w-full lg:left-auto absolute mt-10">
+          <SearchBar />
         </div>
       </div>
-    
     </>
   );
 };

@@ -109,8 +109,8 @@ const Modal = (props) => {
             >
               Information
             </h1>
-            <div className="flex flex-col">
-              <div className="flex flex-row justify-between ">
+            <div className="flex flex-col mb-2">
+              <div className="flex flex-row justify-between  ">
                 <p>User</p>
                 <p>User ID</p>
                 <p>Type</p>

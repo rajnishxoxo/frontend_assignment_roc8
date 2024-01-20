@@ -35,6 +35,7 @@ const SearchBar = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
+        
         dispatch(addItem(data.hits));
         setResult(true);
         setLastSearchText(searchText);

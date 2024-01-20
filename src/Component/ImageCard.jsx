@@ -4,7 +4,23 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 
 const ImageCard = (props) => {
-  const { webformatURL, tags } = props.data;
+  const {
+    id,
+    webformatURL,
+    tags,
+    pageURL,
+    comments,
+    downloads,
+    likes,
+    previewHeight,
+    previewURL,
+    previewWidth,
+    user,
+    user_id,
+    view,
+    webformatHeight,
+  } = props.data;
+
 
   // tags into array.
   const arrayOfTags = tags.split(",");
@@ -29,10 +45,26 @@ const ImageCard = (props) => {
 
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <Modal
-            onClose={closeModal}
-            // Additional props for Modal component
-          />
+       <Modal
+  onClose={closeModal}
+  data={{
+    id,
+    webformatURL,
+    tags,
+    pageURL,
+    comments,
+    downloads,
+    likes,
+    previewHeight,
+    previewURL,
+    previewWidth,
+    user,
+    user_id,
+    view,
+    webformatHeight,
+  }}
+/>
+
         </div>
       )}
 

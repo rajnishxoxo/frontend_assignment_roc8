@@ -2,6 +2,7 @@ import React from "react";
 import { ImCross } from "react-icons/im";
 
 const Modal = (props) => {
+  console.log(props)
   const { onClose } = props;
   return (
     <div

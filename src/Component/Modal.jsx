@@ -18,12 +18,11 @@ const Modal = (props) => {
     previewURL,
   } = data;
 
-  
   const newTag = tags.split(",");
   const handleDownload = async () => {
     try {
       const res = await fetch(previewURL);
-      const blob = await res.blob();      
+      const blob = await res.blob();
       const downloadLink = document.createElement("a");
 
       downloadLink.href = window.URL.createObjectURL(blob);
@@ -38,7 +37,7 @@ const Modal = (props) => {
 
   return (
     <div
-      className="w-[1000px] h-[550px] "
+      className=" w-screen lg:w-[1000px] lg:h-[550px] "
       style={{
         borderRadius: "8.886px",
         background: "#FFF",
@@ -46,7 +45,7 @@ const Modal = (props) => {
       }}
     >
       <div
-        className="w-full m-auto h-20 items-center  flex flex-row justify-between"
+        className="  lg:w-full m-auto h-20 items-center  flex flex-row justify-between"
         style={{
           borderRadius: "8.886px 8.886px 0px 0px",
           background: "#F5F5F5",
@@ -71,8 +70,11 @@ const Modal = (props) => {
       </div>
       <div className="w-full flex flex-row">
         {/* third div */}
-        <div className="w-2/4 ml-10 " style={{}}>
-          <img className="rounded-md w-full object-" src={webformatURL} />
+        <div className="w-2/4 lg:ml-10 " style={{}}>
+          <img
+            className="rounded-md h-80 object-cover lg:w-full object-"
+            src={webformatURL}
+          />
         </div>
         <div className=" w-2/5  mx-auto flex flex-col">
           <h1
@@ -158,7 +160,7 @@ const Modal = (props) => {
           </div>
         </div>
       </div>
-      <div className="flex ml-10 flex-row w-2/4 items-center ">
+      <div className="flex lg:ml-10 flex-row w-2/4 items-center ">
         <div>Tags:</div>
         <div className="flex flex-row justify-between   w-full ">
           {newTag.map((data) => {

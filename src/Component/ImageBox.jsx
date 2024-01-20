@@ -5,6 +5,7 @@ import { addItem, clearItems } from "../reduxStore/imageSlice";
 
 const ImageBox = () => {
   const imageData = useSelector((state) => state.image.images);
+  console.log(imageData);
   const flatArray = imageData.flat(Infinity);
 
   const shuffledArray = flatArray.sort(() => Math.random() - 0.5);

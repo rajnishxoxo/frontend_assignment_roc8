@@ -2,6 +2,14 @@ import React from "react";
 import SearchBar from "../Component/SearchBar";
 
 const LandingPage = () => {
+  //store url in format of array , 0-defaul , 1- newimage.
+
+  // useEffect - after referesh
+
+  // function - random images select. 
+
+  // selected will cover.
+
   return (
     <>
       <div

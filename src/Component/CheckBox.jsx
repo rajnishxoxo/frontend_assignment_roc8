@@ -7,7 +7,7 @@ const CheckBox = () => {
     setIsChecked(!isChecked);
   };
   return (
-    <div className="flex flex-col align-middle">
+    <div className="flex flex-col lg:align-middle">
       <label
         style={{
           display: "inline-flex",

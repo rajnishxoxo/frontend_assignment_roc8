@@ -92,7 +92,7 @@ const Modal = (props) => {
           <CheckBox />
 
           <button
-            className="w-[274.667px] h-[37.333px] mx-auto"
+            className="lg:w-[274.667px] h-[37.333px] mx-auto"
             style={{ background: "#4BC34B" }}
             onClick={handleDownload}
           >

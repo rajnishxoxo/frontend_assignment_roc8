@@ -3,9 +3,7 @@ import SearchBar from "../Component/SearchBar";
 import { imageURL, randomImage, secondImageURL } from "../Utils/util";
 
 const LandingPage = () => {
-
   const arrayOfImage = [imageURL, secondImageURL];
-
   const image = randomImage(arrayOfImage);
 
   return (

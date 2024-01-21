@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import validateFormDetail from "../Utils/validation";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [newUser, setNewUser] = useState(false);
@@ -10,8 +11,8 @@ const Login = () => {
     setName(e.target.value);
   };
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -21,7 +22,15 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Username:", username);
+    console.log("Email:", email);
+    const validationMessage = validateFormDetail(email, password);
+    console.log(validationMessage);
+
+    if (validationMessage) {
+      // Show an alert if there's a validation message (invalid email or password)
+      alert(validationMessage);
+      return; // Do not proceed further if validation failed
+    }
 
     if (newUser) {
       console.log("Name:", name);
@@ -63,16 +72,16 @@ const Login = () => {
           )}
           <div className="mb-4">
             <label
-              htmlFor="username"
+              htmlFor="email"
               className="block text-sm font-medium text-gray-600"
             >
-              Username:
+              Email:
             </label>
             <input
               type="text"
-              id="username"
-              value={username}
-              onChange={handleUsernameChange}
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
               className="mt-1 p-2 w-full border rounded"
             />
           </div>

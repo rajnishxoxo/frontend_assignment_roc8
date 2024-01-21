@@ -1,2 +1,10 @@
 export const imageURL =
   "https://s3-alpha-sig.figma.com/img/4612/66c8/4c5ae5807660eb18152caeff2019dde6?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FvX6cB-JOKiICE8vcy73FJVcapTGqunvcuXCt-Jfnxmrpdcc2ZM6k~kGi~eFmTLe69Tch0Fa-MjplyevZqCy9e0d7~vcbMtnvXITFP7VZ1IqGqHFV09wyviG8h06uxVMOxHmWOrEonpGD3gR~DKIAIfji7L36s54tVNfwrFOsM1Wa4f1OG3LHPxt1WeG7DRJqiXrKpIFdD~ypdjFk85WMaVFYGtiDsgNhY~G5EpCzKL3ogJqPEkWbbUjaGVOO5BuLPBepsxhDs30qvEJNVcO-B8kpTyisJtz5wwMbiDsK5Tjr9SmbZagKtJyPIMy96nOOdNHpF8pl-uzLQJIhsnPZg__";
+
+export const secondImageURL =
+  "https://s3-alpha-sig.figma.com/img/842c/c77c/7dfd24f8b4dfea87babd728870fabfb9?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=paitS0y2wFdTmNF80knhSXo3xvOSpiqJufb2NHinooE0iWUmQtuVuEDkPdCnWwKsexSpzkCsINNijXl6SfPcb0xw4~0kwBu3UAf2xiKxc75fO~iCxNgY6DxQ90PRh-~EcZR6aXZq5XtPcnFHe4eTRFj93KkQIAmeZMMD4ePflRr~jLG8GIXsM6QU2BxxSkSVOwh-8WuQr8i1tuO1TgIT3Viqruz626ac8n4RCZzEBBKUS2yGzcZ2jGRFbelFgvQscuX5o6fOJRatqrINo2ofEqjr0dL8YTIzvzwxg1CSvgoMBjDjOhAuXmD01AxpeWiWu7zCcadfAbmTVpx9YTLo3A__";
+
+export function randomImage(arrayOfImage) {
+  const randomIndex = Math.floor(Math.random() * arrayOfImage.length);
+  return arrayOfImage[randomIndex];
+}

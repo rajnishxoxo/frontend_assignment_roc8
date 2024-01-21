@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../Component/SearchBar";
-import { imageURL } from "../Utils/util";
+import { imageURL, randomImage, secondImageURL } from "../Utils/util";
 
 const LandingPage = () => {
+
+  const arrayOfImage = [imageURL, secondImageURL];
+
+  const image = randomImage(arrayOfImage);
+
   return (
     <>
       <div
         className="w-screen h-screen flex  justify-center"
         style={{
-          background: `url('${imageURL}') lightgray 50% / cover no-repeat`,
+          background: `url('${image}') lightgray 50% / cover no-repeat`,
         }}
       >
         <div

@@ -3,7 +3,12 @@ import React, { useState } from "react";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [newUser, setNewUser] = useState(false);
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -17,7 +22,15 @@ const Login = () => {
     e.preventDefault();
 
     console.log("Username:", username);
-    console.log("Password:", password);
+
+    if (newUser) {
+      console.log("Name:", name);
+      console.log("Password:", password);
+      // Add your signup logic here
+    } else {
+      console.log("Password:", password);
+      // Add your login logic here
+    }
   };
 
   const handleNewUser = () => {
@@ -27,8 +40,27 @@ const Login = () => {
   return (
     <div className="bg-gray-200 min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded shadow-md w-96">
-        <h2 className="text-2xl font-semibold mb-4">Login</h2>
+        <h2 className="text-2xl font-semibold mb-4">
+          {newUser ? "Create your Account" : "Login"}
+        </h2>
         <form onSubmit={handleSubmit}>
+          {newUser && (
+            <div className="mb-4">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-600"
+              >
+                Name:
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={handleNameChange}
+                className="mt-1 p-2 w-full border rounded"
+              />
+            </div>
+          )}
           <div className="mb-4">
             <label
               htmlFor="username"
@@ -66,7 +98,11 @@ const Login = () => {
             {newUser ? "Sign-up" : "Login"}
           </button>
         </form>
-        <p className="cursor-pointer text-blue-700" onClick={handleNewUser}>New user , create your free account now!</p>
+        <p className="cursor-pointer text-blue-700" onClick={handleNewUser}>
+          {newUser
+            ? "Already have an account? Login now!"
+            : "New user, create your free account now!"}
+        </p>
       </div>
     </div>
   );

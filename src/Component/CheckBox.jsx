@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 
 const CheckBox = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [checkedState, setCheckedState] = useState({
+    small: false,
+    medium: false,
+    big: false,
+    original: false,
+  });
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+  const handleCheckboxChange = (checkboxName) => {
+    setCheckedState((prevState) => ({
+      ...Object.keys(prevState).reduce((acc, key) => {
+        acc[key] = key === checkboxName;
+        return acc;
+      }, {}),
+    }));
   };
+
   return (
     <div className="flex flex-col lg:align-middle">
       <label
@@ -18,11 +29,10 @@ const CheckBox = () => {
       >
         <span style={{ marginRight: "8px" }}>Small</span>
         <span style={{ marginRight: "8px" }}>640x960 </span>
-
         <input
           type="checkbox"
-          checked={isChecked}
-          onChange={handleCheckboxChange}
+          checked={checkedState.small}
+          onChange={() => handleCheckboxChange("small")}
         />
       </label>
       <label
@@ -37,8 +47,8 @@ const CheckBox = () => {
         <span style={{ marginRight: "8px" }}>1920x2660 </span>
         <input
           type="checkbox"
-          checked={isChecked}
-          onChange={handleCheckboxChange}
+          checked={checkedState.medium}
+          onChange={() => handleCheckboxChange("medium")}
         />
       </label>
       <label
@@ -51,11 +61,10 @@ const CheckBox = () => {
       >
         <span style={{ marginRight: "8px" }}>Big</span>
         <span style={{ marginRight: "8px" }}>2400x3600 </span>
-
         <input
           type="checkbox"
-          checked={isChecked}
-          onChange={handleCheckboxChange}
+          checked={checkedState.big}
+          onChange={() => handleCheckboxChange("big")}
         />
       </label>
       <label
@@ -68,11 +77,10 @@ const CheckBox = () => {
       >
         <span style={{ marginRight: "8px" }}>Original</span>
         <span style={{ marginRight: "8px" }}>3850x5640 </span>
-
         <input
           type="checkbox"
-          checked={isChecked}
-          onChange={handleCheckboxChange}
+          checked={checkedState.original}
+          onChange={() => handleCheckboxChange("original")}
         />
       </label>
     </div>
